@@ -1,0 +1,54 @@
+services:
+
+  dakoris-app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      - ..:/var/www/html:cached
+
+    environment:
+      DB_HOST: dakoris-db
+      DB_USER: dakoris_user
+      DB_PASSWORD: dakoris_password
+      DB_NAME: dakoris_db
+
+    ports:
+      - "8080:80"
+
+    depends_on:
+      dakoris-db:
+        condition: service_healthy
+
+  dakoris-db:
+    image: mysql:8.0
+    restart: unless-stopped
+
+    environment:
+      MYSQL_DATABASE: dakoris_db
+      MYSQL_USER: dakoris_user
+      MYSQL_PASSWORD: dakoris_password
+      MYSQL_ROOT_PASSWORD: root_password
+
+    volumes:
+      - dakoris-db-data:/var/lib/mysql
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-proot_password"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  dakoris-db-data:
