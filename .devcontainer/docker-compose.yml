@@ -50,5 +50,22 @@ services:
       timeout: 5s
       retries: 20
 
+  phpmyadmin:
+    image: phpmyadmin:5-apache
+    restart: unless-stopped
+
+    environment:
+      PMA_HOST: dakoris-db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+
+    ports:
+      - "8081:80"
+
+    depends_on:
+      dakoris-db:
+        condition: service_healthy
+
 volumes:
   dakoris-db-data:
