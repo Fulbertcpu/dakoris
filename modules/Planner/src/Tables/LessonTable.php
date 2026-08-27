@@ -112,7 +112,7 @@ class LessonTable
 
         $table = DataTable::createPaginated('lessonPlanner', $criteria)->withData($lessons);
 
-        $table->addMetaData('blankSlate', $viewBy == 'class' ? __('There are no lessons for this class.') : __('There are no lessons on this date.'));
+        $table->addMetaData('blankSlate', $viewBy == 'class' ? 'Aucune leçon pour cette classe.' : 'Aucune leçon à cette date.');
 
         $table->modifyRows(function ($values, $row) {
             $now = date('H:i:s');

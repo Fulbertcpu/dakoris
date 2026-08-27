@@ -98,7 +98,7 @@ class StaffDashboard implements OutputableInterface, ContainerAwareInterface
     public function getOutput()
     {
         $output = '<h2>'.
-            __('Staff Dashboard').
+            'Tableau de bord du personnel'.
             '</h2>'.
             "<div class='w-full' style='height:calc(100% - 6rem)'>";
 

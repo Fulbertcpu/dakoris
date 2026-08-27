@@ -11,7 +11,7 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
 
 <div class="flex flex-wrap mb-4 -mx-2 items-stretch ">
     <div class="w-full mx-2 my-2">
-        <h2>{{ __('Welcome') }}</h2>
+        <h2>Bienvenue</h2>
         <p>
         {{ indexText | raw }}
         </p>
@@ -19,8 +19,8 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
 
     {% if publicStudentApplications %}
         {{ homepage.card(
-            __('Student Applications'), 
-            __('Parents of students interested in study at %1$s may use our %2$s online form%3$s to initiate the application process.'), 
+            'Candidatures des élèves', 
+            'Les parents d’élèves souhaitant inscrire leur enfant à %1$s peuvent utiliser notre %2$sformulaire en ligne%3$s pour commencer la procédure de candidature.', 
             "/?q=/modules/Students/applicationForm.php",
             organisationName,
             'first'
@@ -30,8 +30,8 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
 
     {% if publicStaffApplications %}
         {{ homepage.card(
-            __('Staff Applications'), 
-            __('Individuals interested in working at %1$s may use our %2$s online form%3$s to view job openings and begin the recruitment process.'),
+            'Candidatures du personnel', 
+            'Les personnes souhaitant travailler à %1$s peuvent consulter les offres d’emploi et commencer la procédure de recrutement à l’aide de notre %2$sformulaire en ligne%3$s.',
             "/?q=/modules/Staff/applicationForm_jobOpenings_view.php",
             organisationName,
             'first'

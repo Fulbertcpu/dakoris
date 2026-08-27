@@ -67,9 +67,9 @@ class TodaysLessonsTable
         $planner = $this->plannerEntryGateway->queryPlannerByDate($criteria, $gibbonSchoolYearID, $gibbonPersonID, date('Y-m-d'), $viewingAs);
 
         $table = DataTable::create('todaysLessons')->withData($planner);
-        $table->setTitle(__("Today's Lessons"));
+        $table->setTitle('Leçons du jour');
 
-        $table->addMetaData('blankSlate', __('There are no lessons on this date.'));
+        $table->addMetaData('blankSlate', 'Aucune leçon à cette date.');
 
         $table->modifyRows(function ($values, $row) {
             $now = date('H:i:s');
@@ -81,7 +81,7 @@ class TodaysLessonsTable
             return $row;
         });
 
-        $table->addHeaderAction('view', __('View Planner'))
+        $table->addHeaderAction('view', 'Voir le planificateur')
             ->setURL(Url::fromModuleRoute('Planner', 'planner')->withQueryParams(['search' => $viewingAs == 'Parent' ? $gibbonPersonID : '']))
             ->setIcon('calendar')
             ->displayLabel();

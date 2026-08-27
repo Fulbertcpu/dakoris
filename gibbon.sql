@@ -17371,7 +17371,7 @@ INSERT INTO `gibbonSetting` VALUES
 (00003,'System','organisationNameShort','Organisation Initials','','DKS'),
 (00006,'System','pagination','Pagination Count','Must be numeric. Number of records shown per page.','50'),
 (00007,'System','systemName','System Name','','Dakoris'),
-(00008,'System','indexText','Index Page Text','Text displayed in system\'s welcome page.','Welcome to Gibbon, the free, open, flexible school platform. Designed by teachers for learning, Gibbon gives you the school tools you need.'),
+(00008,'System','indexText','Index Page Text','Text displayed in system\'s welcome page.','Bienvenue sur Gibbon, la plateforme scolaire gratuite, ouverte et flexible. Conçu par des enseignants pour l’apprentissage, Gibbon vous offre les outils scolaires dont vous avez besoin.'),
 (00009,'System','absolutePath','Base Path','The local FS path to the system','/var/www/html'),
 (00011,'System','timezone','Timezone','The timezone where the school is located','Africa/Abidjan'),
 (00013,'System','analytics','Analytics','Javascript code to integrate statistics, such as Google Analytics',''),
