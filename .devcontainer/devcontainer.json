@@ -3,6 +3,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "dakoris-app",
   "workspaceFolder": "/workspaces/dakoris",
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -11,6 +12,7 @@
       ]
     }
   },
+
   "forwardPorts": [
     8080
   ]

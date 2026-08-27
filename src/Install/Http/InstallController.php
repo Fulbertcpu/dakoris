@@ -305,7 +305,7 @@ class InstallController
         // Use default language, or language submitted by previous attempt.
         $row = $form->addRow();
             $row->addLabel('code', __('System Language'));
-            $row->addSelectSystemLanguage('code')->addClass('w-64')->selected($_POST['code'] ?? 'en_GB')->required();
+            $row->addSelectSystemLanguage('code')->addClass('w-64')->selected($_POST['code'] ?? 'fr_FR')->required();
 
         $row = $form->addRow();
             $row->addFooter();
@@ -334,7 +334,7 @@ class InstallController
         $this->nonceService->verify($data['nonce'] ?? '', 'install:locale');
 
         // Install locale
-        $installLocale = $data['code'] ?? 'en_GB';
+        $installLocale = $data['code'] ?? 'fr_FR';
         $session->set('installLocale', $installLocale);
         $languageInstalled = !i18nFileExists($this->gibbon->session->get('absolutePath'), $installLocale)
             ? i18nFileInstall($this->gibbon->session->get('absolutePath'), $installLocale)
@@ -454,7 +454,7 @@ class InstallController
         $installer->createConfigFile($context, $config);
 
         // Get the locale code to install.
-        $defaultLocale = $session->get('installLocale') ?: 'en_GB';
+        $defaultLocale = $session->get('installLocale') ?: 'fr_FR';
 
         // Run database installation of the config if (1) and (2) are
         // successful.

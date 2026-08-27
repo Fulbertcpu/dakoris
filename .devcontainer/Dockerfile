@@ -4,15 +4,20 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libxml2-dev \
     libzip-dev \
+    libcurl4-openssl-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     libonig-dev \
     gettext \
+    locales \
+    pkg-config \
+    default-mysql-client \
     unzip \
     git \
     git-lfs \
     curl \
+    && locale-gen fr_FR.UTF-8 \
     && docker-php-ext-configure gd \
         --with-freetype \
         --with-jpeg \
@@ -27,6 +32,7 @@ RUN apt-get update && apt-get install -y \
         intl \
         gettext \
     && a2enmod rewrite \
+    && sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf \
     && git lfs install \
     && rm -rf /var/lib/apt/lists/*
 

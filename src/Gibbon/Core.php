@@ -89,7 +89,14 @@ class Core
         $db = $container->get('db');
         $this->session = $container->get('session');
 
-        if (!$this->session->has('systemSettingsSet') || !$this->session->has('absoluteURL')) {
+        $systemLanguage = $db->selectOne("SELECT code FROM gibboni18n WHERE systemDefault='Y'");
+        $hasPersonalLanguage = !empty($this->session->get('gibboni18nIDPersonal'));
+        $sessionLanguage = $this->session->get(['i18n', 'code']);
+        $languageChanged = !$hasPersonalLanguage
+            && !empty($systemLanguage['code'])
+            && $sessionLanguage !== $systemLanguage['code'];
+
+        if (!$this->session->has('systemSettingsSet') || !$this->session->has('absoluteURL') || $languageChanged) {
             SessionFactory::populateSettings($this->session, $db);
         }
 

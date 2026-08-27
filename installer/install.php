@@ -38,7 +38,7 @@ $_POST = $validator->sanitize($_POST);
 
 // Fix missing locale causing failed page load
 if (empty($gibbon->locale->getLocale())) {
-    $gibbon->locale->setLocale('en_GB');
+    $gibbon->locale->setLocale('fr_FR');
 }
 
 // Page object for rendering
@@ -83,7 +83,7 @@ $context = (Context::fromEnvironment())
 ob_start();
 
 // Attempt to download & install the required language files
-$locale_code = $_POST['code'] ?? 'en_GB';
+$locale_code = $_POST['code'] ?? 'fr_FR';
 
 //Set language pre-install
 if (function_exists('gettext')) {

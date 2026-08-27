@@ -51,7 +51,7 @@ class Config
      *
      * @var boolean
      */
-    private $locale = 'en_GB';
+    private $locale = 'fr_FR';
 
     /**
      * Create config instance for given config file path.
